@@ -153,7 +153,20 @@ var ChatBot = function () {
         Engines: {
             SAP: () => {
                 // patterns that the engine can resolve
-                let capabilities = [];
+                let capabilities = [
+                    "How are you",
+                    "whats up",
+                    "How's life",
+                    "Hi",
+                    "Hello",
+                    "heyy",
+                    "Cya",
+                    "Bye",
+                    "goodbye",
+                    "you stupid",
+                    "You're useless",
+                    "Poop"
+                ];
 
                 let token;
                 const requestURL = "https://api.cai.tools.sap/build/v1/dialog";
