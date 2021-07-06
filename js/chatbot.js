@@ -159,11 +159,13 @@ var ChatBot = function () {
                 const requestURL = "https://api.cai.tools.sap/build/v1/dialog";
                 const requesttoken = "08b73a93215d45ceb7a5adb49b0b7c4c";
 
+                const botURL = "https://api.cai.tools.sap/core/v1/users/1/bots/inventtest"
+
                 return {
                     react: (query) => {
                         const message = {
                             message: { content: query, type: "text" },
-                            conversation_id: Date.now()
+                            conversation_id: 1
                         }
 
                         const requestInfo = {
@@ -267,10 +269,7 @@ var ChatBot = function () {
                             ChatBot.react($(this).val());
                         }
                     });
-                })
-
-
-
+                });
         },
 
         setBotName: function (name) {

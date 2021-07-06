@@ -1,21 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="style.css" />
-    <title>Inventxyz Chatbot demo</title>
+    <script src="https://code.jquery.com/jquery-2.2.4.min.js"
+        integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+    <title>Javascript Chat Bot Demo</title>
 </head>
+
 <body>
-    
+
+    <script src="../js/chatbot.js"></script>
     <link rel="stylesheet" type="text/css" href="../css/chatbot.css" />
 
     <div id="demo">
         <div id="chatBotCommandDescription"></div>
         <input id="humanInput" type="text" placeholder="Say something" />
 
-        <div class="button" onclick="if (!ChatBot.playConversation(sampleConversation,4000)) {alert('conversation already running');};">Play sample conversation!</div>
-        <div class="button" onclick="$('#chatBotCommandDescription').slideToggle();" style="margin-right:10px">What can I say?</div>
+        <div class="button"
+            onclick="if (!ChatBot.playConversation(sampleConversation,4000)) {alert('conversation already running');};">
+            Play sample conversation!</div>
+        <div class="button" onclick="$('#chatBotCommandDescription').slideToggle();" style="margin-right:10px">What can
+            I say?</div>
 
         <div style="clear: both;">&nbsp;</div>
 
@@ -25,8 +31,10 @@
         </div>
     </div>
 
-    <script src="../js/chatbot.js"></script>
+
     <script>
+
+
         var sampleConversation = [
             "Hi",
             "My name is Fry",
@@ -34,32 +42,58 @@
             "What is the population of China?",
             "Bye"
         ];
+
+
+
         var config = {
-            botName: 'Inventxyz',
+            botName: 'SAP',
             inputs: '#humanInput',
             inputCapabilityListing: true,
-            engines: [],
-            normalizer: [function( text ) {
-                return text.replace('!' , '');
-            } , 'trim' ],
-            addChatEntryCallback: function(entryDiv, text, origin) {
-                console.log("here");
+            engines: [ChatBot.Engines.SAP()],
+            normalizer: [text => text.trim()],
+            addChatEntryCallback: function (entryDiv, text, origin) {
                 entryDiv.delay(200).slideDown();
             }
         };
         ChatBot.init(config);
-        ChatBot.setBotName("Inventxyz");
-        ChatBot.addPattern("^hi$", "response", "Howdy, friend", undefined, "Say 'Hi' to be greeted back.");
-        ChatBot.addPattern("^bye$", "response", "See you later buddy", undefined, "Say 'Bye' to end the conversation.");
-        ChatBot.addPattern("(?:my name is|I'm|I am) (.*)", "response", "hi $1, thanks for talking to me today", function (matches) {
-            ChatBot.setHumanName(matches[1]);
-        },"Say 'My name is [your name]' or 'I am [name]' to be called that by the bot");
-        ChatBot.addPattern("(what is the )?meaning of life", "response", "42", undefined, "Say 'What is the meaning of life' to get the answer.");
-        ChatBot.addPattern("compute ([0-9]+) plus ([0-9]+)", "response", undefined, function (matches) {
-            ChatBot.addChatEntry("That would be "+(1*matches[1]+1*matches[2])+".","bot");
-        },"Say 'compute [number] plus [number]' to make the bot your math monkey");
-    
+        ChatBot.setBotName("SAP");
+
     </script>
 
+    <script>
+
+
+        // getToken().then(
+        //     token => {
+        //         const message = {
+        //             message: {
+        //                 content: "Hi",
+        //                 type: "text"
+        //             },
+        //             conversation_id: "1"
+        //         }
+        //         fetch(requestURL, {
+        //             body: JSON.stringify(message),
+        //             method: 'POST',
+        //             headers: {
+        //                 'Authorization': `Bearer ${token.access_token}`,
+        //                 'X-Token': `Token ${requesttoken}`,
+        //                 'Content-Type': 'application/json'
+        //             }
+        //         })
+        //             .then(res => {
+        //                 return res.json()
+        //             })
+        //             .then(data => {
+        //                 console.log(data.results.messages[0]);
+        //             })
+        //             .catch(err => {
+        //                 console.log('err: ', err);
+        //             });
+        //     }
+        // )
+
+    </script>
 </body>
+
 </html>
