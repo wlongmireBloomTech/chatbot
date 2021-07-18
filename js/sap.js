@@ -6,5 +6,3 @@ const secret = "vFab9NkTiAfaUCNoduDSZGnd6FE";
 const requesttoken = "0ff521cfcb2c4a6e2dfde31ebff0a13a";
 const oauthURL = "https://sapcai-community.authentication.eu10.hana.ondemand.com/oauth/token";
 const requestURL = "https://api.cai.tools.sap/build/v1/dialog";
-
-console.log("here");
